@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="app.contollers.OhmController"
+            prefWidth="600" prefHeight="400"
+            style="-fx-background-color: linear-gradient(to bottom right, #f4f6f7, #d6e0f0);">
+
+    <VBox alignment="CENTER" spacing="15" layoutX="100" layoutY="40" prefWidth="400"
+          style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8,0,0,2);">
+
+        <Label text="Калькулятор по закону Ома" textFill="#2c3e50">
+            <font>
+                <Font name="System Bold" size="18"/>
+            </font>
+        </Label>
+
+        <GridPane hgap="10" vgap="8">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" minWidth="130"/>
+                <ColumnConstraints halignment="LEFT" prefWidth="180"/>
+                <ColumnConstraints halignment="LEFT" prefWidth="50"/>
+            </columnConstraints>
+
+            <!-- Напряжение -->
+            <Label text="Напряжение:" GridPane.rowIndex="0" GridPane.columnIndex="0" textFill="#2c3e50"/>
+            <TextField fx:id="vField" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                       style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-padding: 6;"/>
+            <Label text="В" GridPane.rowIndex="0" GridPane.columnIndex="2" textFill="#2c3e50"/>
+
+            <!-- Ток -->
+            <Label text="Ток:" GridPane.rowIndex="1" GridPane.columnIndex="0" textFill="#2c3e50"/>
+            <TextField fx:id="iField" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                       style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-padding: 6;"/>
+            <Label text="А" GridPane.rowIndex="1" GridPane.columnIndex="2" textFill="#2c3e50"/>
+
+            <!-- Сопротивление -->
+            <Label text="Сопротивление:" GridPane.rowIndex="2" GridPane.columnIndex="0" textFill="#2c3e50"/>
+            <TextField fx:id="rField" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                       style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-padding: 6;"/>
+            <Label text="Ω" GridPane.rowIndex="2" GridPane.columnIndex="2" textFill="#2c3e50"/>
+        </GridPane>
+
+        <Button text="Рассчитать" onAction="#onCompute"
+                style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-padding: 6 20 6 20;"
+                prefWidth="150"/>
+
+        <Label fx:id="resultLabel" textFill="#2c3e50" wrapText="true" textAlignment="CENTER"/>
+
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="К делителю" onAction="#onGoDivider"
+                    style="-fx-background-color: #bdc3c7; -fx-text-fill: #2c3e50; -fx-background-radius: 6; -fx-padding: 5 15;"/>
+            <Button text="История" onAction="#onGoHistory"
+                    style="-fx-background-color: #bdc3c7; -fx-text-fill: #2c3e50; -fx-background-radius: 6; -fx-padding: 5 15;"/>
+            <Button text="Выйти" onAction="#onLogout"
+                    style="-fx-background-color: #bdc3c7; -fx-text-fill: #2c3e50; -fx-background-radius: 6; -fx-padding: 5 15;"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

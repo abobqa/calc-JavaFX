@@ -1,0 +1,62 @@
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="app.contollers.HistoryController"
+            prefWidth="1000" prefHeight="580">
+
+    <!-- Верхняя панель фильтров -->
+    <top>
+        <VBox spacing="6">
+            <padding>
+                <Insets top="10" right="14" bottom="8" left="14"/>
+            </padding>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="История вычислений" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Button text="Назад" onAction="#onBack" style="-fx-background-color: #bdc3c7; -fx-text-fill: black;"/>
+                <Button text="Выйти" onAction="#onLogout" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+            </HBox>
+
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Тип:"/>
+                <ComboBox fx:id="typeFilter" prefWidth="120"/>
+                <Label text="С:"/>
+                <DatePicker fx:id="fromDate" prefWidth="140"/>
+                <Label text="По:"/>
+                <DatePicker fx:id="toDate" prefWidth="140"/>
+                <Button text="Обновить" onAction="#reload"
+                        style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="searchField" promptText="Поиск..." prefWidth="200"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Таблица -->
+    <center>
+        <TableView fx:id="table" style="-fx-font-size: 13px;">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+                <TableColumn fx:id="colType" text="Тип" prefWidth="120"/>
+                <TableColumn fx:id="colCreated" text="Когда" prefWidth="180"/>
+                <TableColumn fx:id="colInput" text="Вход" prefWidth="300"/>
+                <TableColumn fx:id="colResult" text="Результат" prefWidth="300"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <!-- Нижняя строка состояния -->
+    <bottom>
+        <HBox alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="6" right="10" bottom="6" left="14"/>
+            </padding>
+            <Label fx:id="statusLabel" text=""/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
